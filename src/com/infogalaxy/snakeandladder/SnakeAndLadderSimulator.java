@@ -3,41 +3,39 @@ package com.infogalaxy.snakeandladder;
 
 import java.util.Random;
 
-import static java.lang.System.out;
 
 public class SnakeAndLadderSimulator {
     //Position of Player
     int playerposition = 0;
     //Showing The Player Current Position
     public void playerposition() {
-        out.println("Player Position Is : " + playerposition);
+        System.out.println("Player Position Is : " + playerposition);
     }
     //Rolling The Die To Get Position
     public void rollsDie() {
             Random random = new Random();
-            int rollsDie = (int) ((Math.random() * (6 - 1)) + 1);
-            out.println("Die Number Is : " + rollsDie);
+            int rollsDie = (int) ((Math.random() * (7 - 1)) + 1);
+            System.out.println("Die Number Is : " + rollsDie);
+            int option = (int) (Math.random() * (4 - 1) + 1);
+            System.out.println("Opsition No : " + option);
             //UC-3 Checking for Opsition to Play
-            int option = (int) (Math.random() * (3 - 1) + 1);
-            out.println("Opsition No : " + option);
             switch (option) {
                 case Constants.NO_PLAY:
                     System.out.println("No Play Arrived.Stay Same Position.");
                     break;
                 case Constants.LADDER:
-                    out.println("HURRAY!!! You Got ladder.");
+                    System.out.println("HURRAY!!! You Got ladder.");
                     playerposition = playerposition + rollsDie;
                     break;
                 case Constants.SNAKE:
-                    if (playerposition == 0) {
-                        playerposition = -(playerposition);
+                    System.out.println("OOPS!!! You Got Snake.");
+                    playerposition = playerposition - rollsDie;
+                    if (playerposition < 0) {
+                        playerposition = 0;
                     }
-                    out.println("OOPS!!! You Got Snake.");
-                    playerposition = playerposition + rollsDie;
                     break;
             }
         }
-
     public static void main(String[] args) {
         //Creating Player1 Object
         SnakeAndLadderSimulator player1 = new SnakeAndLadderSimulator();
