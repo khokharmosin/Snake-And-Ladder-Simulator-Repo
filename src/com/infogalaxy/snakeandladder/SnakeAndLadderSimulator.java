@@ -28,6 +28,10 @@ public class SnakeAndLadderSimulator {
                 case Constants.LADDER:
                     System.out.println("HURRAY!!! You Got ladder.");
                     playerposition = playerposition + rollsDie;
+                    if (playerposition>100){
+                        System.out.println("Player Position Is Out Of Borad..");
+                        playerposition = playerposition - rollsDie;
+                    }
                     break;
                 case Constants.SNAKE:
                     System.out.println("OOPS!!! You Got Snake.");
